@@ -2,14 +2,12 @@ package com.nelson
 
 import kotlinx.coroutines.*
 
-fun main(){
+fun main() = runBlocking<Unit>{
 
     GlobalScope.launch{
         delay(1000L)
         println("World!")
     }
     println("Hello")
-    runBlocking{
-        delay(2000L)
-    }
+    delay(2000L)
 }
