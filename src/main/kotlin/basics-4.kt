@@ -2,12 +2,11 @@ package com.nelson
 
 import kotlinx.coroutines.*
 
-val job = GlobalScope.launch {
-    delay(1000L)
-    println("World!")
-}
-
-fun main() {
+fun main() = runBlocking{
+    val job = GlobalScope.launch {
+        delay(1000L)
+        println("World!")
+    }
     println("Hello, ")
     job.join()
 }
