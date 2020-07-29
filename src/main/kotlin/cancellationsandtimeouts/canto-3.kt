@@ -9,7 +9,7 @@ fun main() = runBlocking {
 
         var nextPrintTime = startTime
         var i = 0
-        while(i < 5){
+        while(isActive){
 
             if(System.currentTimeMillis() >= nextPrintTime){
                 println("job: I'm sleeping ${i++} ...")
