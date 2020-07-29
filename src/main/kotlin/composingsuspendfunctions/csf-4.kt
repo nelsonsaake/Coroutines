@@ -1,4 +1,4 @@
-package csf2
+package csf4
 
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.async
@@ -8,8 +8,10 @@ import kotlin.system.measureTimeMillis
 
 fun main() = runBlocking<Unit> {
     val time = measureTimeMillis {
-        val one = async { doSomethingUsefulOne() }
-        val two = async{ doSomethingUsefulTwo() }
+        val one = async(start = CoroutineStart.LAZY) { doSomethingUsefulOne() }
+        val two = async(start = CoroutineStart.LAZY) { doSomethingUsefulTwo() }
+        one.start()
+        two.start()
         println("The answer is ${one.await() + two.await()}")
     }
     println("Completed in $time ms")
