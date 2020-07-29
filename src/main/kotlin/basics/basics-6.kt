@@ -1,4 +1,4 @@
-package com.nelson.couroutines.basics
+package com.nelson.couroutines.basics.basics
 
 import kotlinx.coroutines.*
 

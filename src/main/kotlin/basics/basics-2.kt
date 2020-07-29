@@ -1,4 +1,4 @@
-package com.nelson.couroutines.basics
+package com.nelson.couroutines.basics.basics
 
 import kotlinx.coroutines.*
 
@@ -9,5 +9,7 @@ fun main(){
         println("World!")
     }
     println("Hello")
-    Thread.sleep(2000L)
+    runBlocking{
+        delay(2000L)
+    }
 }

@@ -1,10 +1,10 @@
-package com.nelson.couroutines.basics
+package com.nelson.couroutines.basics.basics
 
 import kotlinx.coroutines.*
 
 fun main() = runBlocking{
 
-    launch{doWorld()}
+    launch{ doWorld() }
     println("Hello, ")
 }
 
