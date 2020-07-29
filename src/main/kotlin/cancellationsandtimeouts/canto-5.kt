@@ -5,17 +5,17 @@ import kotlinx.coroutines.*
 fun main() = runBlocking {
 
     val job = launch(Dispatchers.Default){
-
         try{
-
             repeat(1000){ i ->
-
                 println("job: I'm sleeping $i ...")
                 delay(500L)
             }
         } finally {
-
-            println("job: I'm running finally")
+            withContext(NonCancellable){
+                println("job: I'm running finally")
+                delay(1000L)
+                println("job: And I've just delayed for 1 sec because I'm non-cancellable")
+            }
         }
     }
     delay(1300L)
