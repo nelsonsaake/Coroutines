@@ -3,10 +3,11 @@ package com.nelson.couroutines.basics
 import kotlinx.coroutines.*
 
 fun main() = runBlocking {
-    repeat(100_000){
-        launch {
+    GlobalScope.launch{
+        repeat(1000){ i ->
+            println("I'm sleeping $i ...")
             delay(5000L)
-            print(".")
         }
     }
+    delay(13000L)
 }
