@@ -1,20 +1,25 @@
 package csf4
 
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis
 
-fun main() = runBlocking<Unit> {
+fun main() {
     val time = measureTimeMillis {
-        val one = async(start = CoroutineStart.LAZY) { doSomethingUsefulOne() }
-        val two = async(start = CoroutineStart.LAZY) { doSomethingUsefulTwo() }
-        one.start()
-        two.start()
-        println("The answer is ${one.await() + two.await()}")
+        val one = doSomethingUsefulOneAsync()
+        val two = doSomethingUsefulTwoAsync()
+        runBlocking {
+            println("The answer is ${one.await() + two.await()}")
+        }
     }
     println("Completed in $time ms")
+}
+
+fun doSomethingUsefulTwoAsync() = GlobalScope.async {
+    doSomethingUsefulTwo()
+}
+
+fun doSomethingUsefulOneAsync() = GlobalScope.async {
+    doSomethingUsefulOne()
 }
 
 suspend fun doSomethingUsefulOne(): Int {
